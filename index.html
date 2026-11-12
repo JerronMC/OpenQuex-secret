@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OpenQuex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo" viewBox="0 0 40 40"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#268BFF"/><stop offset="1" stop-color="#21D69A"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#lg)"/><circle cx="20" cy="19" r="9" fill="none" stroke="#071521" stroke-width="4"/><path d="M23 23l7 8" stroke="#071521" stroke-width="4" stroke-linecap="round"/><circle cx="20" cy="19" r="2.4" fill="#F4FAFF"/></symbol></svg>
+
+<section id="auth" class="auth">
+  <form id="authForm" class="card" data-m="login">
+    <svg class="logo big"><use href="#logo"/></svg>
+    <h1>OpenQuex</h1>
+    <p class="muted">Accounts are stored only in this browser and never sync across devices.</p>
+    <div class="tabs"><button type="button" data-m="login" class="on">Log in</button><button type="button" data-m="reg">Register</button></div>
+    <input id="aUser" placeholder="Username or email" required autocomplete="username">
+    <input id="aEmail" type="email" placeholder="Email" class="regonly" autocomplete="email">
+    <input id="aPass" type="password" placeholder="Password" required autocomplete="current-password">
+    <input id="aPass2" type="password" placeholder="Confirm password" class="regonly" autocomplete="new-password">
+    <label class="chk loginonly"><input type="checkbox" id="aRem"> Remember me</label>
+    <p id="authErr" class="err" role="alert"></p>
+    <button class="btn pri" id="authGo">Log in</button>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <aside id="side">
+    <div class="brand"><svg class="logo"><use href="#logo"/></svg><b>OpenQuex</b></div>
+    <button class="btn pri" id="newChat"><i data-lucide="plus"></i>New chat</button>
+    <input id="q" type="search" placeholder="Search chats (Ctrl+K)" aria-label="Search chats">
+    <nav id="list"></nav>
+    <div class="foot">
+      <div class="rowb"><button class="btn" id="arch"><i data-lucide="archive"></i>Archived</button><button class="btn" id="setBtn"><i data-lucide="settings"></i>Settings</button></div>
+      <div class="user" id="userBox"></div>
+    </div>
+  </aside>
+  <main>
+    <header>
+      <button class="ic" id="menu" aria-label="Menu"><i data-lucide="menu"></i></button>
+      <button class="btn" id="modelBtn" aria-label="Choose model"></button>
+      <select id="effort" aria-label="Effort" title="Uses the model's reasoning parameter when supported, otherwise an instruction">
+        <option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option><option value="extra">Extra</option><option value="max">Max</option>
+      </select>
+    </header>
+    <div id="msgs" aria-live="polite"></div>
+    <footer>
+      <div id="atts"></div>
+      <div class="comp">
+        <button class="ic" id="plus" aria-label="Attach"><i data-lucide="plus"></i></button>
+        <textarea id="in" rows="1" placeholder="Message OpenQuex" aria-label="Message"></textarea>
+        <button class="ic go" id="send" aria-label="Send"><i data-lucide="arrow-up"></i></button>
+      </div>
+      <input type="file" id="fImg" accept="image/png,image/jpeg,image/gif,image/webp" multiple hidden>
+      <input type="file" id="fTxt" accept=".txt,.csv,.json,.xml,.html,.css,.js,.py,.java,.md" multiple hidden>
+    </footer>
+  </main>
+</div>
+<div id="pop" class="pop" hidden></div>
+<dialog id="dlg"></dialog>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
